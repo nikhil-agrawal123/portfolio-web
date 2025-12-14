@@ -208,12 +208,25 @@ const timelineData = [
   },
 ];
 
+const profileData = {
+  name: "Nikhil Agrawal",
+  title: "Full Stack Developer | AI/ML Enthusiast",
+  location: "Delhi, India",
+  avatar: "portfolio.jpg",
+  bio: "Passionate about building scalable web applications and exploring cutting-edge AI/ML technologies.",
+  socials: {
+    github: "https://github.com/nikhil-agrawal123",
+    linkedin: "https://www.linkedin.com/in/nikhil-agrawal-6b238831a/",
+    email: "nikhilagrawal6448@gmail.com",
+  },
+};
+
 const Index = () => {
   return (
     <div className="min-h-screen w-full bg-background">
       <NavBar items={navItems} />
       <section id="home" className="relative">
-        <HeroParallax products={products} />
+        <HeroParallax products={products} profile={profileData} />
       </section>
       <section id="skills" className="relative">
         <TechStack />

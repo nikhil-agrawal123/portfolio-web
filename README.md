@@ -1,73 +1,142 @@
-# Welcome to your Lovable project
+# Portfolio Website
 
-## Project info
+A modern, animated portfolio website built with React, TypeScript, and Tailwind CSS. Features smooth parallax scrolling effects, an interactive tech stack showcase, and a timeline-based journey section.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
 
-## How can I edit this code?
+## ✨ Features
 
-There are several ways of editing your application.
+- **Hero Parallax Section** — Stunning 3D parallax effect showcasing project thumbnails with smooth scroll animations
+- **Interactive Navigation** — Glassmorphic "tubelight" navbar with smooth section scrolling
+- **Tech Stack Showcase** — Animated cards displaying skills across Frontend, Backend, Database, AI/ML, Mobile, and DevOps
+- **Timeline Journey** — Scroll-animated timeline highlighting professional milestones
+- **Fully Responsive** — Optimized for all screen sizes from mobile to desktop
+- **Modern UI Components** — Built with shadcn/ui and Radix UI primitives
+- **Smooth Animations** — Powered by Framer Motion for buttery-smooth transitions
 
-**Use Lovable**
+## 🚀 Getting Started
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+### Prerequisites
 
-Changes made via Lovable will be committed automatically to this repo.
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- npm, yarn, pnpm, or [bun](https://bun.sh/)
 
-**Use your preferred IDE**
+### Installation
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+1. Clone the repository:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+   ```bash
+   git clone https://github.com/nikhil-agrawal123/portfolio-website.git
+   cd portfolio-website
+   ```
 
-Follow these steps:
+2. Install dependencies:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+   ```bash
+   npm install
+   # or
+   bun install
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+3. Start the development server:
 
-# Step 3: Install the necessary dependencies.
-npm i
+   ```bash
+   npm run dev
+   # or
+   bun dev
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+4. Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+### Build for Production
+
+```bash
+npm run build
+npm run preview  # Preview the production build locally
 ```
 
-**Edit a file directly in GitHub**
+## 📁 Project Structure
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```
+src/
+├── components/
+│   └── ui/              # Reusable UI components (shadcn/ui + custom)
+│       ├── hero-parallax.tsx    # Parallax hero section
+│       ├── tubelight-navbar.tsx # Animated navigation bar
+│       ├── tech-stack.tsx       # Skills showcase grid
+│       ├── timeline.tsx         # Journey timeline
+│       └── ...                  # Additional shadcn/ui components
+├── hooks/               # Custom React hooks
+├── lib/                 # Utility functions
+├── pages/               # Page components
+│   ├── Index.tsx        # Main portfolio page
+│   └── NotFound.tsx     # 404 page
+└── App.tsx              # Root component with routing
+```
 
-**Use GitHub Codespaces**
+## 🛠️ Tech Stack
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+| Category | Technologies |
+|----------|-------------|
+| **Framework** | React 18, Vite |
+| **Language** | TypeScript |
+| **Styling** | Tailwind CSS, tailwindcss-animate |
+| **UI Components** | shadcn/ui, Radix UI |
+| **Animations** | Framer Motion |
+| **Routing** | React Router DOM |
+| **State Management** | TanStack React Query |
+| **Icons** | Lucide React |
 
-## What technologies are used for this project?
+## 🎨 Customization
 
-This project is built with:
+### Updating Content
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Projects**: Edit the `products` array in [src/pages/Index.tsx](src/pages/Index.tsx)
+- **Tech Skills**: Modify `techCategories` in [src/components/ui/tech-stack.tsx](src/components/ui/tech-stack.tsx)
+- **Timeline**: Update `timelineData` in [src/pages/Index.tsx](src/pages/Index.tsx)
+- **Navigation**: Adjust `navItems` in [src/pages/Index.tsx](src/pages/Index.tsx)
 
-## How can I deploy this project?
+### Theming
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+The project uses CSS custom properties for theming. Modify colors in [src/index.css](src/index.css).
 
-## Can I connect a custom domain to my Lovable project?
+## 📦 Available Scripts
 
-Yes, you can!
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run build:dev` | Build in development mode |
+| `npm run preview` | Preview production build |
+| `npm run lint` | Run ESLint |
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🤝 Contributing
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Contributions are welcome! Feel free to:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 👤 Author
+
+**Nikhil Agrawal**
+
+- GitHub: [@nikhil-agrawal123](https://github.com/nikhil-agrawal123)
+- Linkedin: [@Nikhil-Agrawal](https://www.linkedin.com/in/nikhil-agrawal-6b238831a/)
+- Email: nikhilagrawal644@gmail.com
+
+---
+
+<p align="center">
+  Built with ❤️ using React and Tailwind CSS
+</p>
