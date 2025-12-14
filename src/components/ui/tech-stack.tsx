@@ -31,31 +31,31 @@ const techCategories: TechCategory[] = [
   {
     title: "Backend",
     icon: <Server className="w-6 h-6" />,
-    skills: ["Node.js", "Python", "Express", "FastAPI", "GraphQL"],
+    skills: ["Node.js", "Python", "Express", "FastAPI"],
     color: "from-green-500 to-emerald-500",
   },
   {
     title: "Database",
     icon: <Database className="w-6 h-6" />,
-    skills: ["PostgreSQL", "MongoDB", "Redis", "Prisma", "Supabase"],
+    skills: ["PostgreSQL", "MongoDB","MySQL" , "Redis (still learning)", "Firebase"],
     color: "from-orange-500 to-amber-500",
   },
   {
     title: "AI/ML",
     icon: <Brain className="w-6 h-6" />,
-    skills: ["TensorFlow", "PyTorch", "Scikit-learn", "OpenAI", "LangChain"],
+    skills: ["TensorFlow", "PyTorch", "Scikit-learn", "OpenAI"],
     color: "from-purple-500 to-pink-500",
   },
   {
     title: "Mobile",
     icon: <Smartphone className="w-6 h-6" />,
-    skills: ["React Native", "Flutter", "Expo", "iOS", "Android"],
+    skills: ["React Native", "Expo (still learning)"],
     color: "from-rose-500 to-red-500",
   },
   {
     title: "DevOps",
     icon: <Layers className="w-6 h-6" />,
-    skills: ["Docker", "AWS", "Vercel", "GitHub Actions", "Kubernetes"],
+    skills: ["Docker", "AWS", "Vercel", "GitHub Actions"],
     color: "from-indigo-500 to-violet-500",
   },
 ];
@@ -148,7 +148,7 @@ export const TechStack = () => {
         style={{ y: backgroundY }}
         className="absolute inset-0 pointer-events-none"
       >
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
       </motion.div>
 
