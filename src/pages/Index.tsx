@@ -46,7 +46,7 @@ const products = [
 
 const timelineData = [
   {
-    title: "2024",
+    title: "2025 - Present",
     content: (
       <div>
         <p className="text-foreground/80 text-xs md:text-sm font-normal mb-8">
@@ -113,7 +113,7 @@ const timelineData = [
     ),
   },
   {
-    title: "2023-2024",
+    title: "2023 - 2024",
     content: (
       <div>
         <p className="text-foreground/80 text-xs md:text-lg font-normal mb-4">
