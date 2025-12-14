@@ -208,12 +208,26 @@ const timelineData = [
   },
 ];
 
+const profileData = {
+  name: "John Doe",
+  title: "Full Stack Developer",
+  location: "San Francisco, CA",
+  avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+  bio: "Passionate about building scalable web applications and exploring cutting-edge AI/ML technologies.",
+  socials: {
+    github: "https://github.com",
+    linkedin: "https://linkedin.com",
+    twitter: "https://twitter.com",
+    email: "hello@example.com",
+  },
+};
+
 const Index = () => {
   return (
     <div className="min-h-screen w-full bg-background">
       <NavBar items={navItems} />
       <section id="home" className="relative">
-        <HeroParallax products={products} />
+        <HeroParallax products={products} profile={profileData} />
       </section>
       <section id="skills" className="relative">
         <TechStack />
