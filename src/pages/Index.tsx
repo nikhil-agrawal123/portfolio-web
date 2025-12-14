@@ -1,13 +1,14 @@
-import { Home, User, Briefcase, FileText } from "lucide-react";
+import { Home, User, Briefcase, FileText, Code2 } from "lucide-react";
 import { NavBar } from "@/components/ui/tubelight-navbar";
 import { HeroParallax } from "@/components/ui/hero-parallax";
 import { Timeline } from "@/components/ui/timeline";
+import { TechStack } from "@/components/ui/tech-stack";
 
 const navItems = [
   { name: "Home", url: "#home", icon: Home },
+  { name: "Skills", url: "#skills", icon: Code2 },
   { name: "About", url: "#about", icon: User },
   { name: "Projects", url: "#projects", icon: Briefcase },
-  { name: "Resume", url: "#resume", icon: FileText },
 ];
 
 const products = [
@@ -213,6 +214,9 @@ const Index = () => {
       <NavBar items={navItems} />
       <section id="home" className="relative">
         <HeroParallax products={products} />
+      </section>
+      <section id="skills" className="relative">
+        <TechStack />
       </section>
       <section id="about" className="relative">
         <Timeline data={timelineData} />
