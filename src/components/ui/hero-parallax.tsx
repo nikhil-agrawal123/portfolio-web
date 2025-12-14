@@ -32,6 +32,7 @@ export const HeroParallax = ({
   }[];
   profile?: ProfileData;
 }) => {
+  const allProducts = products;
   const firstRow = products.slice(0, 3);
   const secondRow = products.slice(3, 6);
   const ref = React.useRef(null);
@@ -71,7 +72,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="h-[280vh] pt-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="min-h-screen md:h-[280vh] pt-20 md:pt-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header profile={profile} />
       <motion.div
@@ -81,9 +82,9 @@ export const HeroParallax = ({
           translateY,
           opacity,
         }}
-        className="will-change-transform"
+        className="will-change-transform hidden md:block"
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-10 md:space-x-20 mb-10 md:mb-20">
           {firstRow.map((product) => (
             <ProductCard
               product={product}
@@ -92,7 +93,7 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row mb-10 space-x-20">
+        <motion.div className="flex flex-row mb-10 space-x-10 md:space-x-20">
           {secondRow.map((product) => (
             <ProductCard
               product={product}
@@ -102,50 +103,52 @@ export const HeroParallax = ({
           ))}
         </motion.div>
       </motion.div>
+      
+      {/* Mobile: Simple grid of projects */}
+      <div className="md:hidden px-4 pb-8">
+        <div className="grid grid-cols-1 gap-4">
+          {products.slice(0, 4).map((product) => (
+            <a
+              key={product.title}
+              href={product.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative h-48 rounded-xl overflow-hidden group"
+            >
+              <img
+                src={product.thumbnail}
+                alt={product.title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-background/80 opacity-0 group-active:opacity-100 transition-opacity flex items-end p-4">
+                <h3 className="text-foreground font-display font-semibold">{product.title}</h3>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
 
 export const Header = ({ profile }: { profile?: ProfileData }) => {
   return (
-    <div className="max-w-7xl relative mx-auto py-12 md:py-28 px-4 w-full left-0 top-0">
-      <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-16">
-        {/* Text Content */}
-        <div className="flex-1">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-2xl md:text-7xl font-bold font-display text-foreground"
-          >
-            Creative Developer <br />
-            <span className="text-gradient">& Builder</span>
-          </motion.h1>
-          <motion.p 
+    <div className="max-w-7xl relative mx-auto py-8 md:py-28 px-4 w-full left-0 top-0">
+      <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 lg:gap-16">
+        {/* Profile Card - Shows first on mobile */}
+        {profile && (
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="max-w-2xl text-base md:text-xl mt-8 text-muted-foreground"
-          >
-            I craft beautiful digital experiences with modern technologies and automation workflows.
-            Passionate about building products that make a difference.
-          </motion.p>
-        </div>
-
-        {/* Profile Card */}
-        {profile && (
-          <motion.div
-            initial={{ opacity: 0, x: 50, rotateY: -10 }}
-            animate={{ opacity: 1, x: 0, rotateY: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="glass-strong rounded-2xl p-8 md:p-10 max-w-md w-full lg:w-auto shrink-0 shadow-2xl border border-primary/20"
+            className="glass-strong rounded-2xl p-6 md:p-10 w-full lg:max-w-md lg:w-auto shrink-0 shadow-2xl border border-primary/20 order-first lg:order-last"
           >
             {/* Avatar */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="relative w-28 h-28 md:w-40 md:h-40 mx-auto mb-6"
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="relative w-20 h-20 md:w-40 md:h-40 mx-auto mb-4 md:mb-6"
             >
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-accent opacity-60 blur-xl" />
               <img
@@ -153,30 +156,30 @@ export const Header = ({ profile }: { profile?: ProfileData }) => {
                 alt={profile.name}
                 className="relative w-full h-full rounded-full object-cover border-2 border-primary/30"
               />
-              <div className="absolute bottom-1 right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-background" />
+              <div className="absolute bottom-0 right-0 md:bottom-1 md:right-1 w-3 h-3 md:w-4 md:h-4 bg-green-500 rounded-full border-2 border-background" />
             </motion.div>
 
             {/* Info */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.7 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
               className="text-center"
             >
-              <h3 className="text-2xl md:text-3xl font-bold font-display text-foreground mb-2">
+              <h3 className="text-xl md:text-3xl font-bold font-display text-foreground mb-1 md:mb-2">
                 {profile.name}
               </h3>
-              <p className="text-primary font-semibold text-base md:text-lg mb-3">
+              <p className="text-primary font-semibold text-sm md:text-lg mb-2 md:mb-3">
                 {profile.title}
               </p>
-              <div className="flex items-center justify-center gap-1 text-muted-foreground text-xs md:text-sm mb-4">
+              <div className="flex items-center justify-center gap-1 text-muted-foreground text-xs md:text-sm mb-3 md:mb-4">
                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <span>{profile.location}</span>
               </div>
-              <p className="text-muted-foreground text-xs md:text-sm leading-relaxed mb-6">
+              <p className="text-muted-foreground text-xs md:text-sm leading-relaxed mb-4 md:mb-6 hidden md:block">
                 {profile.bio}
               </p>
             </motion.div>
@@ -186,8 +189,8 @@ export const Header = ({ profile }: { profile?: ProfileData }) => {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
-                className="flex items-center justify-center gap-4"
+                transition={{ duration: 0.5, delay: 0.6 }}
+                className="flex items-center justify-center gap-3 md:gap-4"
               >
                 {profile.socials.github && (
                   <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-secondary/50 hover:bg-primary/20 hover:text-primary transition-all duration-300">
@@ -208,6 +211,28 @@ export const Header = ({ profile }: { profile?: ProfileData }) => {
             )}
           </motion.div>
         )}
+        
+        {/* Text Content */}
+        <div className="flex-1 order-last lg:order-first">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-3xl md:text-7xl font-bold font-display text-foreground"
+          >
+            Creative Developer <br />
+            <span className="text-gradient">& Builder</span>
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="max-w-2xl text-sm md:text-xl mt-4 md:mt-8 text-muted-foreground"
+          >
+            I craft beautiful digital experiences with modern technologies and automation workflows.
+            Passionate about building products that make a difference.
+          </motion.p>
+        </div>
       </div>
     </div>
   );
@@ -234,7 +259,7 @@ export const ProductCard = ({
         transition: { duration: 0.3, ease: "easeOut" }
       }}
       key={product.title}
-      className="group/product h-96 w-[30rem] relative flex-shrink-0 will-change-transform"
+      className="group/product h-64 md:h-96 w-[20rem] md:w-[30rem] relative flex-shrink-0 will-change-transform"
     >
       <a
         href={product.link}
