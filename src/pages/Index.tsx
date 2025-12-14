@@ -8,7 +8,7 @@ const navItems = [
   { name: "Home", url: "#home", icon: Home },
   { name: "Skills", url: "#skills", icon: Code2 },
   { name: "About", url: "#about", icon: User },
-  { name: "Projects", url: "#projects", icon: Briefcase },
+  { name: "Resume", url: "https://drive.google.com/file/d/1z7QM5hB6BuCVTcDZFpWPXb9Ae-SK6zPj/view?usp=sharing", icon: Briefcase },
 ];
 
 const products = [

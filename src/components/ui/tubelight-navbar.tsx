@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { LucideIcon } from "lucide-react";
+import { DockIcon, LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface NavItem {
@@ -32,9 +32,11 @@ export function NavBar({ items, className }: NavBarProps) {
 
   const handleClick = (item: NavItem) => {
     setActiveTab(item.name);
-    const element = document.querySelector(item.url);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    const element = item.url;
+    if (element[0] === "#") {
+      document.querySelector(element)?.scrollIntoView({ behavior: "smooth" });
+    }else{
+      window.open(item.url, "_blank");
     }
   };
 
