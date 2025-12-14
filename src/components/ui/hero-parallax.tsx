@@ -233,20 +233,20 @@ export const HeroParallax = ({
             {/* Right - Profile Image */}
             {profile && (
               <motion.div
-                initial={{ opacity: 0, scale: 0.9, x: 50 }}
-                animate={{ opacity: 1, scale: 1, x: 0 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, delay: 0.3 }}
-                className="relative z-10 order-1 lg:order-2"
+                className="relative z-10 order-1 lg:order-2 flex items-center justify-center"
               >
-                <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
-                  {/* Glow effect */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/30 to-accent/20 blur-3xl opacity-50" />
+                <div className="relative w-72 h-72 md:w-[22rem] md:h-[22rem] lg:w-[28rem] lg:h-[28rem]">
+                  {/* Subtle glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent blur-3xl opacity-40 scale-110" />
                   
-                  {/* Image */}
+                  {/* Image - borderless with smooth edges */}
                   <img
                     src={profile.avatar}
                     alt={profile.name}
-                    className="relative w-full h-full object-cover rounded-full border-2 border-primary/20"
+                    className="relative w-full h-full object-cover object-center"
                   />
                 </div>
               </motion.div>
