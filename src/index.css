@@ -82,4 +82,9 @@
   .glass {
     @apply bg-background/5 backdrop-blur-xl border border-border/50;
   }
+
+  .glass-strong {
+    @apply bg-background/20 backdrop-blur-2xl border border-border/60;
+    box-shadow: 0 8px 32px hsl(0 0% 0% / 0.4), inset 0 1px 0 hsl(210 40% 98% / 0.05);
+  }
 }
