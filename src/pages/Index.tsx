@@ -126,7 +126,7 @@ const timelineData = [
 
 const profileData = {
   name: "Nikhil Agrawal",
-  title: "Full Stack Developer | AI/ML Enthusiast",
+  title: "Full Stack Developer | AI/ML Enthusiast | Automation Explorer",
   location: "Delhi, India",
   avatar: "portfolio.jpg",
   bio: "Passionate about building scalable web applications and exploring cutting-edge AI/ML technologies.",
