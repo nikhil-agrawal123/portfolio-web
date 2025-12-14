@@ -78,7 +78,7 @@ const timelineData = [
     ),
   },
   {
-    title: "2023",
+    title: "2024",
     content: (
       <div>
         <p className="text-foreground/80 text-xs md:text-sm font-normal mb-8">
@@ -113,51 +113,12 @@ const timelineData = [
     ),
   },
   {
-    title: "2022",
+    title: "2023-2024",
     content: (
       <div>
-        <p className="text-foreground/80 text-xs md:text-sm font-normal mb-4">
-          Key achievements and milestones
+        <p className="text-foreground/80 text-xs md:text-lg font-normal mb-4">
+          Completed my class 12th and cleared JEE Advance starting my Journey with Computer Science and Applied Mathamatics in IIIT-Delhi.
         </p>
-        <div className="mb-8">
-          <div className="flex gap-2 items-center text-muted-foreground text-xs md:text-sm">
-            ✅ Mastered TypeScript and modern React patterns
-          </div>
-          <div className="flex gap-2 items-center text-muted-foreground text-xs md:text-sm">
-            ✅ Built first production-ready SaaS application
-          </div>
-          <div className="flex gap-2 items-center text-muted-foreground text-xs md:text-sm">
-            ✅ Contributed to open-source projects
-          </div>
-          <div className="flex gap-2 items-center text-muted-foreground text-xs md:text-sm">
-            ✅ Obtained cloud certifications
-          </div>
-          <div className="flex gap-2 items-center text-muted-foreground text-xs md:text-sm">
-            ✅ Started technical blogging
-          </div>
-        </div>
-        <div className="grid grid-cols-2 gap-4">
-          <img
-            src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=500&h=500&fit=crop"
-            alt="working on laptop"
-            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=500&h=500&fit=crop"
-            alt="coding"
-            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c?w=500&h=500&fit=crop"
-            alt="programming"
-            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=500&h=500&fit=crop"
-            alt="developer desk"
-            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-          />
-        </div>
       </div>
     ),
   },

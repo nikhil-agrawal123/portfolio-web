@@ -220,8 +220,8 @@ export const Header = ({ profile }: { profile?: ProfileData }) => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-3xl md:text-7xl font-bold font-display text-foreground"
           >
-            Creative Developer <br />
-            <span className="text-gradient">& Builder</span>
+            Nikhil Agrawal <br />
+            <span className="text-gradient">Devloper & More</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
