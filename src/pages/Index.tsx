@@ -128,7 +128,7 @@ const profileData = {
   name: "Nikhil Agrawal",
   title: "Full Stack Developer | AI/ML Enthusiast | Automation Explorer",
   location: "Delhi, India",
-  avatar: "portfolio.jpg",
+  avatar: "genportfolio.png",
   bio: "Passionate about building scalable web applications and exploring cutting-edge AI/ML technologies.",
   socials: {
     github: "https://github.com/nikhil-agrawal123",
