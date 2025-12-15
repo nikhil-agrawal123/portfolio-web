@@ -3,7 +3,6 @@ import { NavBar } from "@/components/ui/tubelight-navbar";
 import { HeroParallax } from "@/components/ui/hero-parallax";
 import { Timeline } from "@/components/ui/timeline";
 import { TechStack } from "@/components/ui/tech-stack";
-import { title } from "process";
 
 const navItems = [
   { name: "Home", url: "#home", icon: Home },
