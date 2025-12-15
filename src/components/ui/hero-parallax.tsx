@@ -123,7 +123,7 @@ const MarqueeRow = ({
       // Reset for seamless loop
       if (direction === "left" && newX <= -totalWidth) {
         newX = 0;
-      } else if (direction === "right" && newX >= totalWidth) {
+      } else if (direction === "right" && newX >= 0) {
         newX = -totalWidth;
       }
       
