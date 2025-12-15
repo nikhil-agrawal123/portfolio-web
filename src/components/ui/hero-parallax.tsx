@@ -13,19 +13,21 @@ import { ArrowDown } from "lucide-react";
 import { Button } from "./button";
 import { SocialIcons } from "./social-icons";
 
-// Mobile animated project card with directional scroll animations
+// Mobile animated project card with stacked overlapping effect
 const MobileProjectCard = ({
   product,
   index,
+  total,
 }: {
   product: { title: string; link: string; thumbnail: string };
   index: number;
+  total: number;
 }) => {
-  const cardRef = useRef<HTMLAnchorElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(cardRef, { 
     once: false, 
-    margin: "-50px 0px -50px 0px",
-    amount: 0.3 
+    margin: "-100px 0px -100px 0px",
+    amount: 0.4 
   });
 
   // Alternate directions: left, right, bottom
@@ -35,43 +37,54 @@ const MobileProjectCard = ({
   const getInitialPosition = () => {
     switch (direction) {
       case "left":
-        return { x: -100, y: 0, opacity: 0 };
+        return { x: -120, y: 0, opacity: 0, rotate: -8 };
       case "right":
-        return { x: 100, y: 0, opacity: 0 };
+        return { x: 120, y: 0, opacity: 0, rotate: 8 };
       case "bottom":
-        return { x: 0, y: 80, opacity: 0 };
+        return { x: 0, y: 100, opacity: 0, rotate: 0 };
     }
   };
 
   const initial = getInitialPosition();
 
   return (
-    <motion.a
+    <motion.div
       ref={cardRef}
-      href={product.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="relative h-52 rounded-xl overflow-hidden group block"
+      className="sticky top-20"
+      style={{ zIndex: index + 1 }}
       initial={initial}
-      animate={isInView ? { x: 0, y: 0, opacity: 1 } : initial}
+      animate={isInView ? { x: 0, y: 0, opacity: 1, rotate: 0 } : initial}
       transition={{
         type: "spring",
-        stiffness: 100,
-        damping: 20,
-        mass: 0.8,
-        delay: 0.05,
+        stiffness: 80,
+        damping: 18,
+        mass: 1,
       }}
     >
-      <img
-        src={product.thumbnail}
-        alt={product.title}
-        className="w-full h-full object-cover transition-transform duration-500 group-active:scale-105"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 p-4">
-        <h3 className="text-foreground font-display font-semibold text-lg">{product.title}</h3>
-      </div>
-    </motion.a>
+      <a
+        href={product.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative block h-72 rounded-2xl overflow-hidden group shadow-2xl border border-border/20"
+        style={{
+          transform: `scale(${1 - index * 0.02})`,
+        }}
+      >
+        <img
+          src={product.thumbnail}
+          alt={product.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-active:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-5">
+          <span className="text-xs text-muted-foreground uppercase tracking-wider mb-1 block">Project {index + 1}</span>
+          <h3 className="text-foreground font-display font-bold text-xl">{product.title}</h3>
+        </div>
+        <div className="absolute top-4 right-4 bg-primary/20 backdrop-blur-sm px-3 py-1 rounded-full">
+          <span className="text-xs text-primary font-medium">View Project</span>
+        </div>
+      </a>
+    </motion.div>
   );
 };
 
@@ -416,11 +429,14 @@ export const HeroParallax = ({
       {/* Mobile: Animated scroll-triggered projects */}
       <div className="md:hidden px-4 pb-8">
         <h2 className="text-2xl font-bold font-display text-foreground mb-6 text-center">My Projects</h2>
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col">
           {products.slice(0, 6).map((product, index) => (
-            <MobileProjectCard key={product.title} product={product} index={index} />
+            <div key={product.title} className="h-64">
+              <MobileProjectCard product={product} index={index} total={6} />
+            </div>
           ))}
         </div>
+        <div className="h-72" /> {/* Spacer for last card */}
       </div>
     </div>
   );
