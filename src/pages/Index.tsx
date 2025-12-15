@@ -3,6 +3,7 @@ import { NavBar } from "@/components/ui/tubelight-navbar";
 import { HeroParallax } from "@/components/ui/hero-parallax";
 import { Timeline } from "@/components/ui/timeline";
 import { TechStack } from "@/components/ui/tech-stack";
+import { title } from "process";
 
 const navItems = [
   { name: "Home", url: "#home", icon: Home },
@@ -42,6 +43,11 @@ const products = [
     link: "https://github.com/nikhil-agrawal123/ISRO_BAH",
     thumbnail: "timeseries.png",
   },
+  {
+    title: "Python Assembly Interpreter",
+    link : "https://github.com/nikhil-agrawal123/CO_project",
+    thumbnail: "assembly.png",
+  }
 ];
 
 const timelineData = [
@@ -52,25 +58,26 @@ const timelineData = [
         <p className="text-foreground/80 text-xs md:text-sm font-normal mb-8">
           Led development of multiple full-stack applications, focusing on modern React patterns and cloud architecture.
         </p>
+        <ul className="list-disc list-inside text-foreground/80 text-xs md:text-sm font-normal mb-8 space-y-2">
+          <li>Worked on various projects involving AI/ML integration, enhancing user experiences with intelligent features.</li>
+          <li>Learned basic concepts of AI/ML and implemented them in small projects.</li>
+          <li>Exploring DSA concepts to strengthen problem-solving skills on leetcode.</li>
+          <li>Currently learning Mobile Development using React Native and Expo with some concepts of Docker.</li>
+        </ul>
         <div className="grid grid-cols-2 gap-4">
           <img
-            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&h=500&fit=crop"
-            alt="coding workspace"
+            src="deepfake.png"
+            alt="deepfake detection"
             className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
           />
           <img
-            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&h=500&fit=crop"
-            alt="code on screen"
+            src="ecell.png"
+            alt="ecell website"
             className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
           />
           <img
-            src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&h=500&fit=crop"
-            alt="laptop coding"
-            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=500&h=500&fit=crop"
-            alt="development setup"
+            src="healthChat.png"
+            alt="=health chat nexus"
             className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
           />
         </div>
@@ -81,31 +88,27 @@ const timelineData = [
     title: "2024",
     content: (
       <div>
-        <p className="text-foreground/80 text-xs md:text-sm font-normal mb-8">
-          Expanded expertise in cloud technologies and microservices architecture.
+        <p className="text-foreground/80 text-lg md:text-lg font-normal mb-8">
+          Started learning web development and AI/ML concepts through online courses and personal projects.
         </p>
-        <p className="text-foreground/80 text-xs md:text-sm font-normal mb-8">
-          Collaborated with cross-functional teams to deliver scalable solutions for enterprise clients.
-        </p>
+        <ul className="list-disc list-inside text-foreground/80 text-xs md:text-sm font-normal mb-8 space-y-2">
+          <li>Created a small clone of Amazon UI.</li>
+          <li>Build and explored some basic Backend projects using Node.js and FastAPI.</li>
+        </ul>
         <div className="grid grid-cols-2 gap-4">
           <img
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500&h=500&fit=crop"
-            alt="team collaboration"
+            src="amazon.png"
+            alt="amazon clone"
             className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
           />
           <img
-            src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&h=500&fit=crop"
-            alt="office work"
+            src="fast.png"
+            alt="fastapi backend"
             className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
           />
           <img
-            src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=500&h=500&fit=crop"
-            alt="meeting"
-            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&h=500&fit=crop"
-            alt="tech team"
+            src="grader.png"
+            alt="project grader"
             className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
           />
         </div>
