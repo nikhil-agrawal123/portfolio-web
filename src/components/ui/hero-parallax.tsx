@@ -426,17 +426,16 @@ export const HeroParallax = ({
         <MarqueeRow products={secondRow} direction="right" speed={100} />
       </motion.div>
       
-      {/* Mobile: Animated scroll-triggered projects */}
+      {/* Mobile: Animated scroll-triggered stacked projects */}
       <div className="md:hidden px-4 pb-8">
         <h2 className="text-2xl font-bold font-display text-foreground mb-6 text-center">My Projects</h2>
-        <div className="flex flex-col">
+        <div className="relative">
           {products.slice(0, 6).map((product, index) => (
-            <div key={product.title} className="h-64">
+            <div key={product.title} className="h-[75vh]">
               <MobileProjectCard product={product} index={index} total={6} />
             </div>
           ))}
         </div>
-        <div className="h-72" /> {/* Spacer for last card */}
       </div>
     </div>
   );
