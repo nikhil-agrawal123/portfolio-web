@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import {
   motion,
   useScroll,
@@ -7,86 +7,10 @@ import {
   MotionValue,
   useMotionValue,
   useAnimationFrame,
-  useInView,
 } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { Button } from "./button";
 import { SocialIcons } from "./social-icons";
-
-// Mobile animated project card with stacked overlapping effect
-const MobileProjectCard = ({
-  product,
-  index,
-  total,
-}: {
-  product: { title: string; link: string; thumbnail: string };
-  index: number;
-  total: number;
-}) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(cardRef, { 
-    once: false, 
-    margin: "-100px 0px -100px 0px",
-    amount: 0.4 
-  });
-
-  // Alternate directions: left, right, bottom
-  const directions = ["left", "right", "bottom"] as const;
-  const direction = directions[index % 3];
-
-  const getInitialPosition = () => {
-    switch (direction) {
-      case "left":
-        return { x: -120, y: 0, opacity: 0, rotate: -8 };
-      case "right":
-        return { x: 120, y: 0, opacity: 0, rotate: 8 };
-      case "bottom":
-        return { x: 0, y: 100, opacity: 0, rotate: 0 };
-    }
-  };
-
-  const initial = getInitialPosition();
-
-  return (
-    <motion.div
-      ref={cardRef}
-      className="sticky top-20"
-      style={{ zIndex: index + 1 }}
-      initial={initial}
-      animate={isInView ? { x: 0, y: 0, opacity: 1, rotate: 0 } : initial}
-      transition={{
-        type: "spring",
-        stiffness: 80,
-        damping: 18,
-        mass: 1,
-      }}
-    >
-      <a
-        href={product.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="relative block h-72 rounded-2xl overflow-hidden group shadow-2xl border border-border/20"
-        style={{
-          transform: `scale(${1 - index * 0.02})`,
-        }}
-      >
-        <img
-          src={product.thumbnail}
-          alt={product.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-active:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 p-5">
-          <span className="text-xs text-muted-foreground uppercase tracking-wider mb-1 block">Project {index + 1}</span>
-          <h3 className="text-foreground font-display font-bold text-xl">{product.title}</h3>
-        </div>
-        <div className="absolute top-4 right-4 bg-primary/20 backdrop-blur-sm px-3 py-1 rounded-full">
-          <span className="text-xs text-primary font-medium">View Project</span>
-        </div>
-      </a>
-    </motion.div>
-  );
-};
 
 interface ProfileData {
   name: string;
@@ -426,14 +350,27 @@ export const HeroParallax = ({
         <MarqueeRow products={secondRow} direction="right" speed={100} />
       </motion.div>
       
-      {/* Mobile: Animated scroll-triggered stacked projects */}
+      {/* Mobile: Simple grid of projects */}
       <div className="md:hidden px-4 pb-8">
         <h2 className="text-2xl font-bold font-display text-foreground mb-6 text-center">My Projects</h2>
-        <div className="relative">
-          {products.slice(0, 6).map((product, index) => (
-            <div key={product.title} className="h-[75vh]">
-              <MobileProjectCard product={product} index={index} total={6} />
-            </div>
+        <div className="grid grid-cols-1 gap-4">
+          {products.slice(0, 4).map((product) => (
+            <a
+              key={product.title}
+              href={product.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative h-48 rounded-xl overflow-hidden group"
+            >
+              <img
+                src={product.thumbnail}
+                alt={product.title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-background/80 opacity-0 group-active:opacity-100 transition-opacity flex items-end p-4">
+                <h3 className="text-foreground font-display font-semibold">{product.title}</h3>
+              </div>
+            </a>
           ))}
         </div>
       </div>
