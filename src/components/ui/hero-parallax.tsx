@@ -5,6 +5,8 @@ import {
   useTransform,
   useSpring,
   MotionValue,
+  useMotionValue,
+  useAnimationFrame,
 } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { Button } from "./button";
@@ -37,8 +39,16 @@ const GeometricLines = () => (
       stroke="hsl(var(--muted-foreground))"
       strokeWidth="1"
       initial={{ opacity: 0, pathLength: 0 }}
-      animate={{ opacity: 1, pathLength: 1 }}
-      transition={{ duration: 2, delay: 0.5 }}
+      animate={{ 
+        opacity: [0.3, 0.6, 0.3],
+        pathLength: 1,
+        y: [0, -10, 0],
+      }}
+      transition={{ 
+        opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+        pathLength: { duration: 2, delay: 0.5 },
+        y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+      }}
     />
     {/* Triangle 2 - middle right */}
     <motion.polygon
@@ -47,8 +57,14 @@ const GeometricLines = () => (
       stroke="hsl(var(--muted-foreground))"
       strokeWidth="1"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 0.6 }}
-      transition={{ duration: 2, delay: 0.8 }}
+      animate={{ 
+        opacity: [0.2, 0.5, 0.2],
+        y: [0, 15, 0],
+      }}
+      transition={{ 
+        opacity: { duration: 5, delay: 0.8, repeat: Infinity, ease: "easeInOut" },
+        y: { duration: 7, delay: 0.8, repeat: Infinity, ease: "easeInOut" },
+      }}
     />
     {/* Lines crossing */}
     <motion.line
@@ -56,27 +72,87 @@ const GeometricLines = () => (
       stroke="hsl(var(--muted-foreground))"
       strokeWidth="0.5"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 0.4 }}
-      transition={{ duration: 1.5, delay: 1 }}
+      animate={{ opacity: [0.2, 0.4, 0.2] }}
+      transition={{ duration: 4, delay: 1, repeat: Infinity, ease: "easeInOut" }}
     />
     <motion.line
       x1="700" y1="50" x2="650" y2="600"
       stroke="hsl(var(--muted-foreground))"
       strokeWidth="0.5"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 0.4 }}
-      transition={{ duration: 1.5, delay: 1.2 }}
+      animate={{ opacity: [0.1, 0.4, 0.1] }}
+      transition={{ duration: 5, delay: 1.2, repeat: Infinity, ease: "easeInOut" }}
     />
     <motion.line
       x1="550" y1="200" x2="900" y2="300"
       stroke="hsl(var(--muted-foreground))"
       strokeWidth="0.5"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 0.3 }}
-      transition={{ duration: 1.5, delay: 1.4 }}
+      animate={{ opacity: [0.15, 0.3, 0.15] }}
+      transition={{ duration: 4.5, delay: 1.4, repeat: Infinity, ease: "easeInOut" }}
     />
   </svg>
 );
+
+const MarqueeRow = ({
+  products,
+  direction,
+  speed = 100,
+}: {
+  products: { title: string; link: string; thumbnail: string }[];
+  direction: "left" | "right";
+  speed?: number;
+}) => {
+  const [isPaused, setIsPaused] = React.useState(false);
+  
+  // Calculate total width for seamless loop
+  const cardWidth = 30 * 16; // 30rem in pixels
+  const gap = 80; // 5rem gap in pixels
+  const totalWidth = (cardWidth + gap) * products.length;
+
+  const x = useMotionValue(direction === "left" ? 0 : -totalWidth);
+
+
+  useAnimationFrame((time, delta) => {
+    if (!isPaused) {
+      const moveBy = (direction === "left" ? -speed : speed) * (delta / 1000);
+      const currentX = x.get();
+      let newX = currentX + moveBy;
+      
+      // Reset for seamless loop
+      if (direction === "left" && newX <= -totalWidth) {
+        newX = 0;
+      } else if (direction === "right" && newX >= totalWidth) {
+        newX = -totalWidth;
+      }
+      
+      x.set(newX);
+    }
+  });
+
+
+  return (
+    <div 
+      className="flex mb-20 overflow-hidden"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      <motion.div
+        className="flex gap-20"
+        style={{ x }}
+      >
+        {/* Duplicate products for seamless loop */}
+        {[...products, ...products, ...products].map((product, idx) => (
+          <ProductCard
+            product={product}
+            key={`${product.title}-${idx}`}
+            isMarquee={true}
+          />
+        ))}
+      </motion.div>
+    </div>
+  );
+};
 
 export const HeroParallax = ({
   products,
@@ -273,7 +349,7 @@ export const HeroParallax = ({
         </motion.div>
       </div>
 
-      {/* Parallax Projects Section - Desktop only */}
+      {/* Parallax Projects Section - Desktop only with Marquee */}
       <motion.div
         style={{
           rotateX,
@@ -281,26 +357,10 @@ export const HeroParallax = ({
           translateY,
           opacity,
         }}
-        className="will-change-transform hidden md:block"
+        className="will-change-transform hidden md:block px-8"
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
-          {firstRow.map((product) => (
-            <ProductCard
-              product={product}
-              translate={translateX}
-              key={product.title}
-            />
-          ))}
-        </motion.div>
-        <motion.div className="flex flex-row mb-20 space-x-20">
-          {secondRow.map((product) => (
-            <ProductCard
-              product={product}
-              translate={translateXReverse}
-              key={product.title}
-            />
-          ))}
-        </motion.div>
+        <MarqueeRow products={firstRow} direction="left" speed={100} />
+        <MarqueeRow products={secondRow} direction="right" speed={100} />
       </motion.div>
       
       {/* Mobile: Simple grid of projects */}
@@ -334,19 +394,21 @@ export const HeroParallax = ({
 export const ProductCard = ({
   product,
   translate,
+  isMarquee = false,
 }: {
   product: {
     title: string;
     link: string;
     thumbnail: string;
   };
-  translate: MotionValue<number>;
+  translate?: MotionValue<number>;
+  isMarquee?: boolean;
 }) => {
+  const style = isMarquee ? {} : { x: translate };
+
   return (
     <motion.div
-      style={{
-        x: translate,
-      }}
+      style={style}
       whileHover={{
         y: -20,
         transition: { duration: 0.3, ease: "easeOut" }
