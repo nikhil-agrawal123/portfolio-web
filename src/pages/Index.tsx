@@ -1,13 +1,15 @@
-import { Home, User, Briefcase, FileText, Code2 } from "lucide-react";
+import { Home, User, Briefcase, Code2, Mail } from "lucide-react";
 import { NavBar } from "@/components/ui/tubelight-navbar";
 import { HeroParallax } from "@/components/ui/hero-parallax";
 import { Timeline } from "@/components/ui/timeline";
 import { TechStack } from "@/components/ui/tech-stack";
+import { Contact2 } from "@/components/ui/contact-2";
 
 const navItems = [
   { name: "Home", url: "#home", icon: Home },
   { name: "Skills", url: "#skills", icon: Code2 },
   { name: "About", url: "#about", icon: User },
+  { name: "Contact", url: "#contact", icon: Mail },
   { name: "Resume", url: "https://drive.google.com/file/d/1z7QM5hB6BuCVTcDZFpWPXb9Ae-SK6zPj/view?usp=sharing", icon: Briefcase },
 ];
 
@@ -151,6 +153,15 @@ const Index = () => {
       </section>
       <section id="about" className="relative">
         <Timeline data={timelineData} />
+      </section>
+      <section id="contact" className="relative">
+        <Contact2
+          title="Get In Touch"
+          description="I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision."
+          phone="+91 9876543210"
+          email="nikhilagrawal6448@gmail.com"
+          web={{ label: "GitHub", url: "https://github.com/nikhil-agrawal123" }}
+        />
       </section>
     </div>
   );
