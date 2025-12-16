@@ -225,7 +225,6 @@ export const Contact2 = ({
                         <div className="hamster__tail"></div>
                       </div>
                     </div>
-                    <div className="spoke"></div>
                   </div>
                   <span>Sending...</span>
                 </>
