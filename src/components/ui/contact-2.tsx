@@ -16,14 +16,17 @@ interface Contact2Props {
 }
 
 const contactUs = async (params: {firstname: string; lastname: string; email: string; subject: string; message: string}) => {
-  const url = import.meta.env.VITE_WEBHOOK_URL;
-  const response = await fetch(url, {
+  const response = await fetch("http://localhost:5000/api/contact", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(params),
   });
+  if (!response.ok) {
+    return { error: "Failed to send message" };
+  }
+
   return await response.json();
 };
 
