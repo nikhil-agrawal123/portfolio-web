@@ -211,7 +211,6 @@ export const Contact2 = ({
               {isSubmitting ? (
                 <>
                   <div className="wheel-and-hamster" aria-label="Loading" role="img">
-                    <div className="wheel"></div>
                     <div className="hamster">
                       <div className="hamster__body">
                         <div className="hamster__head">

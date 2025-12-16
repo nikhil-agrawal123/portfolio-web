@@ -98,14 +98,12 @@
   font-size: 14px;
 }
 
-.wheel,
 .hamster,
 .hamster div,
 .spoke {
   position: absolute;
 }
 
-.wheel,
 .spoke {
   border-radius: 50%;
   top: 0;
@@ -114,10 +112,6 @@
   height: 100%;
 }
 
-.wheel {
-  background: radial-gradient(100% 100% at center, hsla(0,0%,60%,0) 47.8%, hsl(var(--primary)) 48%);
-  z-index: 2;
-}
 
 .hamster {
   animation: hamster var(--dur) ease-in-out infinite;
