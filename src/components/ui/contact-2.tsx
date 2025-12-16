@@ -15,6 +15,18 @@ interface Contact2Props {
   web?: { label: string; url: string };
 }
 
+const contactUs = async (params: {firstname: string; lastname: string; email: string; subject: string; message: string}) => {
+  const url = import.meta.env.VITE_WEBHOOK_URL;
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(params),
+  });
+  return await response.json();
+};
+
 export const Contact2 = ({
   title = "Get In Touch",
   description = "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.",
@@ -43,21 +55,30 @@ export const Contact2 = ({
     setIsSubmitting(true);
     
     // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
-    
-    setFormData({
-      firstname: "",
-      lastname: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
-    setIsSubmitting(false);
+    const response = await contactUs(formData);
+    if (!response || response.error) {
+      toast({
+        title: "Error",
+        description: "There was an issue sending your message. Please try again later.",
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
+      return;
+    }else{
+      toast({
+            title: "Message Sent!",
+            description: "Thank you for reaching out. I'll get back to you soon.",
+          });
+          
+      setFormData({
+        firstname: "",
+        lastname: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+      setIsSubmitting(false);
+      }
   };
 
   return (
