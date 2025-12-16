@@ -1,13 +1,4 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
 const nodemailer = require("nodemailer");
-
-const app = express();
-
-// Middleware
-app.use(cors());
-app.use(express.json());
 
 // Create email transporter
 const transporter = nodemailer.createTransport({
@@ -18,33 +9,38 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Verify transporter on startup
-transporter.verify((error, success) => {
-  if (error) {
-    console.error("❌ Email transporter error:", error.message);
-  } else {
-    console.log("✅ Email server is ready to send messages");
-  }
-});
+module.exports = async (req, res) => {
+  // Set CORS headers
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-// Contact form endpoint
-app.post("/api/contact", async (req, res) => {
-  const { firstname,lastname, email, message } = req.body;
+  // Handle preflight request
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
+  // Only allow POST
+  if (req.method !== "POST") {
+    return res.status(405).json({ success: false, error: "Method not allowed" });
+  }
+
+  const { firstname, lastname, email, message } = req.body;
 
   // Validation
   if (!firstname || !lastname || !email || !message) {
-    return res.status(400).json({ 
-      success: false, 
-      error: "All fields are required." 
+    return res.status(400).json({
+      success: false,
+      error: "All fields are required.",
     });
   }
 
   // Basic email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
-    return res.status(400).json({ 
-      success: false, 
-      error: "Invalid email address." 
+    return res.status(400).json({
+      success: false,
+      error: "Invalid email address.",
     });
   }
 
@@ -74,23 +70,12 @@ app.post("/api/contact", async (req, res) => {
     });
 
     console.log(`✅ Email sent from ${firstname} ${lastname} (${email})`);
-    res.json({ success: true, message: "Email sent successfully!" });
+    return res.status(200).json({ success: true, message: "Email sent successfully!" });
   } catch (error) {
     console.error("❌ Failed to send email:", error.message);
-    res.status(500).json({ 
-      success: false, 
-      error: "Failed to send email. Please try again later." 
+    return res.status(500).json({
+      success: false,
+      error: "Failed to send email. Please try again later.",
     });
   }
-});
-
-// Health check endpoint
-app.get("/api/health", (req, res) => {
-  res.json({ status: "ok", timestamp: new Date().toISOString() });
-});
-
-// Start server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-});
+};
