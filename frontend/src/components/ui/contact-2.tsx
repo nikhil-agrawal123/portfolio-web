@@ -205,11 +205,37 @@ export const Contact2 = ({
             </div>
             <Button 
               type="submit" 
-              className="w-full gap-2" 
+              className="w-full gap-2 h-12" 
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Sending..." : "Send Message"}
-              <Send className="h-4 w-4" />
+              {isSubmitting ? (
+                <>
+                  <div className="wheel-and-hamster" aria-label="Loading" role="img">
+                    <div className="wheel"></div>
+                    <div className="hamster">
+                      <div className="hamster__body">
+                        <div className="hamster__head">
+                          <div className="hamster__ear"></div>
+                          <div className="hamster__eye"></div>
+                          <div className="hamster__nose"></div>
+                        </div>
+                        <div className="hamster__limb hamster__limb--fr"></div>
+                        <div className="hamster__limb hamster__limb--fl"></div>
+                        <div className="hamster__limb hamster__limb--br"></div>
+                        <div className="hamster__limb hamster__limb--bl"></div>
+                        <div className="hamster__tail"></div>
+                      </div>
+                    </div>
+                    <div className="spoke"></div>
+                  </div>
+                  <span>Sending...</span>
+                </>
+              ) : (
+                <>
+                  Send Message
+                  <Send className="h-4 w-4" />
+                </>
+              )}
             </Button>
           </form>
         </div>
