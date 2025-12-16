@@ -158,9 +158,9 @@ const Index = () => {
         <Contact2
           title="Get In Touch"
           description="I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision."
-          phone="+91 9876543210"
+          phone="+91 9811782270"
           email="nikhilagrawal6448@gmail.com"
-          web={{ label: "GitHub", url: "https://github.com/nikhil-agrawal123" }}
+          web={{ label: "Nikhil Agrawal", url: "https://portfolio-eight-omega-35.vercel.app/" }}
         />
       </section>
     </div>

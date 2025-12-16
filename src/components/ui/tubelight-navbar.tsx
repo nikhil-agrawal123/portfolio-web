@@ -1,8 +1,6 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { DockIcon, LucideIcon } from "lucide-react";
+import {  LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface NavItem {
@@ -30,12 +28,45 @@ export function NavBar({ items, className }: NavBarProps) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Intersection Observer for automatic tab updates
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "-50% 0px -50% 0px",
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          const matchingItem = items.find((item) => item.url === `#${sectionId}`);
+          if (matchingItem) {
+            setActiveTab(matchingItem.name);
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections that have corresponding nav items
+    items.forEach((item) => {
+      if (item.url.startsWith("#")) {
+        const element = document.querySelector(item.url);
+        if (element) {
+          observer.observe(element);
+        }
+      }
+    });
+
+    return () => observer.disconnect();
+  }, [items]);
+
   const handleClick = (item: NavItem) => {
     setActiveTab(item.name);
     const element = item.url;
     if (element[0] === "#") {
       document.querySelector(element)?.scrollIntoView({ behavior: "smooth" });
-    }else{
+    } else {
       window.open(item.url, "_blank");
     }
   };
