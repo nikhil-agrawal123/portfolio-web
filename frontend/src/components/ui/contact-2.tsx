@@ -16,7 +16,7 @@ interface Contact2Props {
 }
 
 const contactUs = async (params: {firstname: string; lastname: string; email: string; subject: string; message: string}) => {
-  const response = await fetch("http://localhost:5000/api/contact", {
+  const response = await fetch("/api/contact", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
