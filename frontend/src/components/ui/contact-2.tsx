@@ -30,6 +30,16 @@ const contactUs = async (params: {firstname: string; lastname: string; email: st
   return await response.json();
 };
 
+async function emailChecker(email:String) {
+  const response = await fetch("http://localhost:5678/webhook-test/7e133999-2871-43c7-8b63-b1a22fe3f59f", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email }),
+  });
+}
+
 export const Contact2 = ({
   title = "Get In Touch",
   description = "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.",
