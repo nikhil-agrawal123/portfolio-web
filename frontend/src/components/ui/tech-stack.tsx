@@ -23,15 +23,15 @@ interface TechCategory {
 
 const techCategories: TechCategory[] = [
   {
-    title: "Frontend",
+    title: "Languages ",
     icon: <Globe className="w-6 h-6" />,
-    skills: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
+    skills: ["JavaScript", "TypeScript", "Python", "Java", "SQL", "HTML", "CSS", "C++"],
     color: "from-cyan-500 to-blue-500",
   },
   {
-    title: "Backend",
+    title: "Frameworks & Libraries",
     icon: <Server className="w-6 h-6" />,
-    skills: ["Node.js", "Python", "Express", "FastAPI"],
+    skills: ["Node.js", "React", "Express", "FastAPI", "Next.js", "Django", "Google Cloud APIs", "n8n", "Tailwind CSS"],
     color: "from-green-500 to-emerald-500",
   },
   {
@@ -43,14 +43,8 @@ const techCategories: TechCategory[] = [
   {
     title: "AI/ML",
     icon: <Brain className="w-6 h-6" />,
-    skills: ["TensorFlow", "PyTorch", "Scikit-learn", "OpenAI"],
+    skills: ["TensorFlow", "PyTorch", "Scikit-learn", "RAG", "Hugging Face"],
     color: "from-purple-500 to-pink-500",
-  },
-  {
-    title: "Mobile",
-    icon: <Smartphone className="w-6 h-6" />,
-    skills: ["React Native", "Expo (still learning)"],
-    color: "from-rose-500 to-red-500",
   },
   {
     title: "DevOps",
