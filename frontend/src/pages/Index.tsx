@@ -49,6 +49,10 @@ const products = [
     title: "Python Assembly Interpreter",
     link : "https://github.com/nikhil-agrawal123/CO_project",
     thumbnail: "assembly.png",
+  },{
+    title: "Explainable RAG System",
+    link: "https://github.com/nikhil-agrawal123/Explainable-Rag-System",
+    thumbnail: "rag.png",
   }
 ];
 
