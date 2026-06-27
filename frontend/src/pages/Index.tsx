@@ -6,7 +6,7 @@ import { TechStack } from "@/components/ui/tech-stack";
 import { Contact2 } from "@/components/ui/contact-2";
 import { Achievements } from "@/components/ui/achievements";
 
-const resumeLink = import.meta.env.VITE_RESUME_LINK;
+const resumeLink = 'https://drive.google.com/file/d/1CUeRVK1hx84sAWGuMoMeaAXbQRjUdNUv/view?usp=sharing';
 
 const navItems = [
   { name: "Home", url: "#home", icon: Home },
