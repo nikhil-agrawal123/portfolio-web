@@ -7,46 +7,41 @@
 
 @layer base {
   :root {
-    --background: 220 20% 4%;
-    --foreground: 210 40% 98%;
+    --background: 216 56% 95%;
+    --foreground: 224 36% 16%;
 
-    --card: 220 18% 8%;
-    --card-foreground: 210 40% 98%;
+    --card: 210 60% 99%;
+    --card-foreground: 224 36% 16%;
 
-    --popover: 220 18% 8%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 210 60% 99%;
+    --popover-foreground: 224 36% 16%;
 
-    --primary: 175 80% 50%;
-    --primary-foreground: 220 20% 4%;
+    --primary: 178 80% 38%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 14%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 255 70% 95%;
+    --secondary-foreground: 258 45% 30%;
 
-    --muted: 220 14% 12%;
-    --muted-foreground: 215 20% 55%;
+    --muted: 214 45% 92%;
+    --muted-foreground: 222 16% 40%;
 
-    --accent: 175 60% 40%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 262 78% 60%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 78% 56%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 14% 18%;
-    --input: 220 14% 18%;
-    --ring: 175 80% 50%;
+    --border: 216 32% 85%;
+    --input: 216 32% 85%;
+    --ring: 178 80% 38%;
 
     --radius: 0.75rem;
 
     /* Custom portfolio tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(175 80% 50%) 0%, hsl(200 80% 50%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(220 20% 6%) 0%, hsl(220 20% 4%) 100%);
-    --glow-primary: 0 0 60px hsl(175 80% 50% / 0.3);
-    --shadow-card: 0 25px 50px -12px hsl(0 0% 0% / 0.5);
-  }
-
-  .dark {
-    --background: 220 20% 4%;
-    --foreground: 210 40% 98%;
+    --gradient-primary: linear-gradient(135deg, hsl(178 80% 40%) 0%, hsl(262 78% 60%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(210 60% 99%) 0%, hsl(216 56% 95%) 100%);
+    --glow-primary: 0 0 60px hsl(262 78% 60% / 0.22);
+    --shadow-card: 0 25px 50px -12px hsl(224 36% 16% / 0.14);
   }
 }
 
@@ -62,6 +57,11 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Inter', sans-serif;
+    background-image:
+      radial-gradient(circle at 15% 12%, hsl(178 80% 60% / 0.18), transparent 38%),
+      radial-gradient(circle at 85% 18%, hsl(262 78% 65% / 0.18), transparent 40%),
+      radial-gradient(circle at 50% 95%, hsl(210 85% 70% / 0.14), transparent 45%);
+    background-attachment: fixed;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -80,12 +80,12 @@
   }
 
   .glass {
-    @apply bg-background/5 backdrop-blur-xl border border-border/50;
+    @apply bg-card/70 backdrop-blur-xl border border-border/50;
   }
 
   .glass-strong {
-    @apply bg-background/20 backdrop-blur-2xl border border-border/60;
-    box-shadow: 0 8px 32px hsl(0 0% 0% / 0.4), inset 0 1px 0 hsl(210 40% 98% / 0.05);
+    @apply bg-card/90 backdrop-blur-2xl border border-border/60;
+    box-shadow: 0 8px 32px hsl(220 25% 14% / 0.08), inset 0 1px 0 hsl(0 0% 100% / 0.6);
   }
 }
 

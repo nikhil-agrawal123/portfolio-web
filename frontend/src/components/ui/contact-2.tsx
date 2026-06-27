@@ -95,7 +95,7 @@ export const Contact2 = ({
   };
 
   return (
-    <section className="py-16 md:py-32 bg-background">
+    <section className="py-16 md:py-32">
       <div className="container px-4 md:px-6">
         <div className="mx-auto flex max-w-screen-xl flex-col justify-between gap-10 lg:flex-row lg:gap-20">
           {/* Left side - Contact info */}
