@@ -7,41 +7,41 @@
 
 @layer base {
   :root {
-    --background: 210 30% 98%;
-    --foreground: 220 25% 14%;
+    --background: 216 56% 95%;
+    --foreground: 224 36% 16%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 220 25% 14%;
+    --card: 210 60% 99%;
+    --card-foreground: 224 36% 16%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 14%;
+    --popover: 210 60% 99%;
+    --popover-foreground: 224 36% 16%;
 
-    --primary: 175 75% 36%;
+    --primary: 178 80% 38%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 25% 94%;
-    --secondary-foreground: 220 25% 14%;
+    --secondary: 255 70% 95%;
+    --secondary-foreground: 258 45% 30%;
 
-    --muted: 210 25% 95%;
-    --muted-foreground: 220 12% 42%;
+    --muted: 214 45% 92%;
+    --muted-foreground: 222 16% 40%;
 
-    --accent: 175 55% 42%;
+    --accent: 262 78% 60%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 75% 50%;
+    --destructive: 0 78% 56%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 215 20% 88%;
-    --input: 215 20% 88%;
-    --ring: 175 75% 36%;
+    --border: 216 32% 85%;
+    --input: 216 32% 85%;
+    --ring: 178 80% 38%;
 
     --radius: 0.75rem;
 
     /* Custom portfolio tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(175 75% 36%) 0%, hsl(200 75% 42%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 30% 96%) 100%);
-    --glow-primary: 0 0 60px hsl(175 75% 36% / 0.18);
-    --shadow-card: 0 25px 50px -12px hsl(220 25% 14% / 0.12);
+    --gradient-primary: linear-gradient(135deg, hsl(178 80% 40%) 0%, hsl(262 78% 60%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(210 60% 99%) 0%, hsl(216 56% 95%) 100%);
+    --glow-primary: 0 0 60px hsl(262 78% 60% / 0.22);
+    --shadow-card: 0 25px 50px -12px hsl(224 36% 16% / 0.14);
   }
 }
 
@@ -57,6 +57,11 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Inter', sans-serif;
+    background-image:
+      radial-gradient(circle at 15% 12%, hsl(178 80% 60% / 0.18), transparent 38%),
+      radial-gradient(circle at 85% 18%, hsl(262 78% 65% / 0.18), transparent 40%),
+      radial-gradient(circle at 50% 95%, hsl(210 85% 70% / 0.14), transparent 45%);
+    background-attachment: fixed;
   }
 
   h1, h2, h3, h4, h5, h6 {

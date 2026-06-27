@@ -135,7 +135,7 @@ export const TechStack = () => {
   return (
     <section
       ref={containerRef}
-      className="relative py-20 md:py-32 overflow-hidden bg-background"
+      className="relative py-20 md:py-32 overflow-hidden"
     >
       {/* Animated background elements */}
       <motion.div

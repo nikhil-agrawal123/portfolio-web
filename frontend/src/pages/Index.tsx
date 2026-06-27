@@ -169,7 +169,7 @@ const profileData = {
 
 const Index = () => {
   return (
-    <div className="min-h-screen w-full bg-background">
+    <div className="min-h-screen w-full">
       <NavBar items={navItems} />
       <section id="home" className="relative">
         <HeroParallax products={products} profile={profileData} />
