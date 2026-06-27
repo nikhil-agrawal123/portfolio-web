@@ -26,6 +26,8 @@ interface ProfileData {
   };
 }
 
+const resumeLink = import.meta.env.VITE_RESUME_LINK ;
+
 // Geometric lines SVG component
 const GeometricLines = () => (
   <svg
@@ -258,7 +260,7 @@ export const HeroParallax = ({
                 <Button
                   size="lg"
                   className="bg-primary text-primary-foreground hover:bg-primary/90 px-8"
-                  onClick={() => window.open('https://drive.google.com/file/d/1z7QM5hB6BuCVTcDZFpWPXb9Ae-SK6zPj/view?usp=sharing', '_blank')}
+                  onClick={() => window.open(resumeLink, '_blank')}
                 >
                   Download CV
                 </Button>

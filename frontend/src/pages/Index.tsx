@@ -6,13 +6,15 @@ import { TechStack } from "@/components/ui/tech-stack";
 import { Contact2 } from "@/components/ui/contact-2";
 import { Achievements } from "@/components/ui/achievements";
 
+const resumeLink = import.meta.env.VITE_RESUME_LINK;
+
 const navItems = [
   { name: "Home", url: "#home", icon: Home },
   { name: "Skills", url: "#skills", icon: Code2 },
   { name: "About", url: "#about", icon: User },
   { name: "Awards", url: "#achievements", icon: Trophy },
   { name: "Contact", url: "#contact", icon: Mail },
-  { name: "Resume", url: "https://drive.google.com/file/d/1z7QM5hB6BuCVTcDZFpWPXb9Ae-SK6zPj/view?usp=sharing", icon: Briefcase },
+  { name: "Resume", url: resumeLink, icon: Briefcase },
 ];
 
 const products = [
@@ -84,7 +86,7 @@ const timelineData = [
     ),
   },
   {
-    title: "2025 - Present",
+    title: "2025 - 2026",
     content: (
       <div>
         <p className="text-foreground/80 text-xs md:text-sm font-normal mb-8">
