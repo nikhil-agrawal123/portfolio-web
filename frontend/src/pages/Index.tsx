@@ -57,8 +57,13 @@ const products = [
   },
   {
     title: "Cloud Diffusion Model",
-    link: "https://github.com/nikhil-agrawal123",
+    link: "https://github.com/nikhil-agrawal123/Cloud-diffusion",
     thumbnail: "manymore.png",
+  },
+  {
+    title: "Gridlock — Traffic Prediction",
+    link: "https://github.com/nikhil-agrawal123/gridlock",
+    thumbnail: "gridlock.svg",
   },
 ];
 
