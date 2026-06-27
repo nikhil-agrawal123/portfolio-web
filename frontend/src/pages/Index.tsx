@@ -4,7 +4,7 @@ import { HeroParallax } from "@/components/ui/hero-parallax";
 import { Timeline } from "@/components/ui/timeline";
 import { TechStack } from "@/components/ui/tech-stack";
 import { Contact2 } from "@/components/ui/contact-2";
-import Snowfall from "react-snowfall";
+// import Snowfall from "react-snowfall";
 
 const navItems = [
   { name: "Home", url: "#home", icon: Home },
@@ -150,7 +150,7 @@ const Index = () => {
   return (
     <div className="min-h-screen w-full bg-background">
       <NavBar items={navItems} />
-      <Snowfall
+      {/* <Snowfall
         color="white"
         snowflakeCount={150}
         style={{
@@ -160,7 +160,7 @@ const Index = () => {
           zIndex: 9999,
           pointerEvents: 'none',
         }}
-      />
+      /> */}
       <section id="home" className="relative">
         <HeroParallax products={products} profile={profileData} />
       </section>
