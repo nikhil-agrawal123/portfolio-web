@@ -190,8 +190,9 @@ export const HeroParallax = ({
     springConfig
   );
 
-  const firstRow = products.slice(0, 4);
-  const secondRow = products.slice(4, 8);
+  const midpoint = Math.ceil(products.length / 2);
+  const firstRow = products.slice(0, midpoint);
+  const secondRow = products.slice(midpoint);
 
   const scrollToProjects = () => {
     window.scrollTo({
@@ -341,29 +342,46 @@ export const HeroParallax = ({
         <MarqueeRow products={secondRow} direction="right" speed={100} />
       </motion.div>
       
-      {/* Mobile: Simple grid of projects */}
+      {/* Mobile: Animated grid of projects */}
       <div className="md:hidden px-4 pb-8">
         <h2 className="text-2xl font-bold font-display text-foreground mb-6 text-center">My Projects</h2>
-        <div className="grid grid-cols-1 gap-4">
-          {products.slice(0, 4).map((product) => (
-            <a
+        <motion.div
+          className="grid grid-cols-2 gap-3"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.08 } },
+          }}
+        >
+          {products.map((product) => (
+            <motion.a
               key={product.title}
               href={product.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative h-48 rounded-xl overflow-hidden group"
+              variants={{
+                hidden: { opacity: 0, y: 24, scale: 0.96 },
+                visible: { opacity: 1, y: 0, scale: 1 },
+              }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              whileTap={{ scale: 0.96 }}
+              className="relative h-36 rounded-xl overflow-hidden border border-border/60 shadow-sm bg-card"
             >
               <img
                 src={product.thumbnail}
                 alt={product.title}
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-background/80 opacity-0 group-active:opacity-100 transition-opacity flex items-end p-4">
-                <h3 className="text-foreground font-display font-semibold">{product.title}</h3>
-              </div>
-            </a>
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent" />
+              <h3 className="absolute bottom-2 left-2 right-2 text-foreground font-display font-semibold text-xs leading-tight line-clamp-2">
+                {product.title}
+              </h3>
+            </motion.a>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -1,15 +1,16 @@
-import { Home, User, Briefcase, Code2, Mail } from "lucide-react";
+import { Home, User, Briefcase, Code2, Mail, Trophy } from "lucide-react";
 import { NavBar } from "@/components/ui/tubelight-navbar";
 import { HeroParallax } from "@/components/ui/hero-parallax";
 import { Timeline } from "@/components/ui/timeline";
 import { TechStack } from "@/components/ui/tech-stack";
 import { Contact2 } from "@/components/ui/contact-2";
-import Snowfall from "react-snowfall";
+import { Achievements } from "@/components/ui/achievements";
 
 const navItems = [
   { name: "Home", url: "#home", icon: Home },
   { name: "Skills", url: "#skills", icon: Code2 },
   { name: "About", url: "#about", icon: User },
+  { name: "Awards", url: "#achievements", icon: Trophy },
   { name: "Contact", url: "#contact", icon: Mail },
   { name: "Resume", url: "https://drive.google.com/file/d/1z7QM5hB6BuCVTcDZFpWPXb9Ae-SK6zPj/view?usp=sharing", icon: Briefcase },
 ];
@@ -53,22 +54,42 @@ const products = [
     title: "Explainable RAG System",
     link: "https://github.com/nikhil-agrawal123/Explainable-Rag-System",
     thumbnail: "rag.png",
-  }
+  },
+  {
+    title: "Cloud Diffusion Model",
+    link: "https://github.com/nikhil-agrawal123",
+    thumbnail: "manymore.png",
+  },
 ];
 
 const timelineData = [
+  {
+    title: "2026 - Present",
+    content: (
+      <div>
+        <p className="text-foreground/80 text-xs md:text-sm font-normal mb-8">
+          NLP / Deep Learning Intern at FlameNLP, researching intent detection in user queries.
+        </p>
+        <ul className="list-disc list-inside text-foreground/80 text-xs md:text-sm font-normal mb-8 space-y-2">
+          <li>Researching explicit and implicit intent detection, building classifiers to distinguish surface-level from latent user goals using transformer-based architectures.</li>
+          <li>Constructed a synthetic dataset of implicit and explicit conversations — including coded, ambiguous, and indirect language — to probe hidden self-harm tendency detection.</li>
+          <li>Investigating neural network internal representations to improve intent classification robustness across ambiguous, context-dependent inputs.</li>
+        </ul>
+      </div>
+    ),
+  },
   {
     title: "2025 - Present",
     content: (
       <div>
         <p className="text-foreground/80 text-xs md:text-sm font-normal mb-8">
-          Led development of multiple full-stack applications, focusing on modern React patterns and cloud architecture.
+          Led development of multiple full-stack and AI/ML applications while taking on web development leadership roles.
         </p>
         <ul className="list-disc list-inside text-foreground/80 text-xs md:text-sm font-normal mb-8 space-y-2">
-          <li>Worked on various projects involving AI/ML integration, enhancing user experiences with intelligent features.</li>
-          <li>Learned basic concepts of AI/ML and implemented them in small projects.</li>
-          <li>Exploring DSA concepts to strengthen problem-solving skills on leetcode.</li>
-          <li>Currently learning Mobile Development using React Native and Expo with some concepts of Docker.</li>
+          <li>Web Development Lead, E-Cell IIIT Delhi — leading end-to-end development of core digital platforms for E-Summit 2025, IIIT Delhi's flagship entrepreneurship event.</li>
+          <li>Development Lead, Esya (IIIT Delhi Tech Fest 2025) — architected and shipped a 3D animated interactive website independently, from design to deployment.</li>
+          <li>Built RAG pipelines, diffusion models, and deepfake detection systems, applying transformer encoders/decoders and transfer learning to real-world problems.</li>
+          <li>Exploring DSA concepts to strengthen problem-solving skills on LeetCode.</li>
         </ul>
         <div className="grid grid-cols-2 gap-4">
           <img
@@ -150,17 +171,6 @@ const Index = () => {
   return (
     <div className="min-h-screen w-full bg-background">
       <NavBar items={navItems} />
-      <Snowfall
-        color="white"
-        snowflakeCount={150}
-        style={{
-          position: 'fixed',
-          width: '100vw',
-          height: '100vh',
-          zIndex: 9999,
-          pointerEvents: 'none',
-        }}
-      />
       <section id="home" className="relative">
         <HeroParallax products={products} profile={profileData} />
       </section>
@@ -169,6 +179,9 @@ const Index = () => {
       </section>
       <section id="about" className="relative">
         <Timeline data={timelineData} />
+      </section>
+      <section id="achievements" className="relative">
+        <Achievements />
       </section>
       <section id="contact" className="relative">
         <Contact2
