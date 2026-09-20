@@ -1,5 +1,17 @@
 const nodemailer = require("nodemailer");
 
+// User input is interpolated into an HTML email below. Without escaping, anyone can put
+// arbitrary markup (links, images, spoofed content) into the mail you receive.
+const escapeHtml = (value) =>
+  String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
+const LIMITS = { firstname: 100, lastname: 100, email: 254, message: 5000 };
+
 // Create email transporter
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -44,6 +56,23 @@ module.exports = async (req, res) => {
     });
   }
 
+  const tooLong = Object.entries(LIMITS).find(
+    ([field, max]) => String({ firstname, lastname, email, message }[field]).length > max,
+  );
+  if (tooLong) {
+    return res.status(400).json({
+      success: false,
+      error: `${tooLong[0]} is too long (max ${tooLong[1]} characters).`,
+    });
+  }
+
+  const safe = {
+    firstname: escapeHtml(firstname),
+    lastname: escapeHtml(lastname),
+    email: escapeHtml(email),
+    message: escapeHtml(message),
+  };
+
   try {
     await transporter.sendMail({
       from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
@@ -56,11 +85,11 @@ module.exports = async (req, res) => {
           <h2 style="color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">
             New Contact Form Submission
           </h2>
-          <p><strong>Name:</strong> ${firstname} ${lastname}</p>
-          <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+          <p><strong>Name:</strong> ${safe.firstname} ${safe.lastname}</p>
+          <p><strong>Email:</strong> <a href="mailto:${safe.email}">${safe.email}</a></p>
           <div style="margin-top: 20px; padding: 15px; background-color: #f5f5f5; border-radius: 5px;">
             <strong>Message:</strong>
-            <p style="white-space: pre-wrap;">${message}</p>
+            <p style="white-space: pre-wrap;">${safe.message}</p>
           </div>
           <p style="color: #888; font-size: 12px; margin-top: 20px;">
             Sent from your portfolio website contact form

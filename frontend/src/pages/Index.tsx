@@ -1,16 +1,18 @@
-import { Home, User, Briefcase, Code2, Mail, Trophy } from "lucide-react";
+import { Home, User, Briefcase, Code2, Mail, Trophy, FlaskConical } from "lucide-react";
 import { NavBar } from "@/components/ui/tubelight-navbar";
 import { HeroParallax } from "@/components/ui/hero-parallax";
 import { Timeline } from "@/components/ui/timeline";
 import { TechStack } from "@/components/ui/tech-stack";
 import { Contact2 } from "@/components/ui/contact-2";
 import { Achievements } from "@/components/ui/achievements";
+import { Experience } from "@/components/ui/experience";
 
 const resumeLink = 'https://drive.google.com/file/d/1CUeRVK1hx84sAWGuMoMeaAXbQRjUdNUv/view?usp=sharing';
 
 const navItems = [
   { name: "Home", url: "#home", icon: Home },
   { name: "Skills", url: "#skills", icon: Code2 },
+  { name: "Experience", url: "#experience", icon: FlaskConical },
   { name: "About", url: "#about", icon: User },
   { name: "Awards", url: "#achievements", icon: Trophy },
   { name: "Contact", url: "#contact", icon: Mail },
@@ -75,12 +77,13 @@ const timelineData = [
     content: (
       <div>
         <p className="text-foreground/80 text-xs md:text-sm font-normal mb-8">
-          NLP / Deep Learning Intern at FlameNLP, researching intent detection in user queries.
+          Undergraduate Research Intern at FlameNLP (IIIT Delhi), advised by Prof. Md. Shad Akhtar — working on
+          mechanistic interpretability and safety alignment of large language models.
         </p>
         <ul className="list-disc list-inside text-foreground/80 text-xs md:text-sm font-normal mb-8 space-y-2">
-          <li>Researching explicit and implicit intent detection, building classifiers to distinguish surface-level from latent user goals using transformer-based architectures.</li>
-          <li>Constructed a synthetic dataset of implicit and explicit conversations — including coded, ambiguous, and indirect language — to probe hidden self-harm tendency detection.</li>
-          <li>Investigating neural network internal representations to improve intent classification robustness across ambiguous, context-dependent inputs.</li>
+          <li>First-author work under review at ICLR 2027: <em>Safety Alignment is Context-Blind: Models Detect Distress but Do Not Act on It</em>.</li>
+          <li>Built TrafficSense (Gridlock), an event-driven congestion engine fusing live speed feeds, weather and a CatBoost risk model over a graph of the road network.</li>
+          <li>Shipped a role-based College ERP in Java + MySQL with timed registration windows and one-click backup/restore.</li>
         </ul>
       </div>
     ),
@@ -95,7 +98,8 @@ const timelineData = [
         <ul className="list-disc list-inside text-foreground/80 text-xs md:text-sm font-normal mb-8 space-y-2">
           <li>Web Development Lead, E-Cell IIIT Delhi — leading end-to-end development of core digital platforms for E-Summit 2025, IIIT Delhi's flagship entrepreneurship event.</li>
           <li>Development Lead, Esya (IIIT Delhi Tech Fest 2025) — architected and shipped a 3D animated interactive website independently, from design to deployment.</li>
-          <li>Built RAG pipelines, diffusion models, and deepfake detection systems, applying transformer encoders/decoders and transfer learning to real-world problems.</li>
+          <li>Won HackLLM 2025 among 200+ teams with a pipeline to detect and mitigate LLM hallucinations; ranked top 2.4% nationally in the Google GDG Solution Challenge.</li>
+          <li>Built an explainable RAG system with hybrid dense + BM25 retrieval and cross-encoder reranking, a conditional diffusion model for INSAT satellite imagery (SSIM +30–40% over a shallow-CNN baseline), and a Grad-CAM deepfake detector at 91% validation accuracy.</li>
           <li>Exploring DSA concepts to strengthen problem-solving skills on LeetCode.</li>
         </ul>
         <div className="grid grid-cols-2 gap-4">
@@ -163,10 +167,10 @@ const timelineData = [
 
 const profileData = {
   name: "Nikhil Agrawal",
-  title: "Full Stack Developer | AI/ML Enthusiast | Automation Explorer",
+  title: "LLM Interpretability & AI Safety Researcher | Full Stack Developer",
   location: "Delhi, India",
   avatar: "portfolio.jpg",
-  bio: "Passionate about building scalable web applications and exploring cutting-edge AI/ML technologies.",
+  bio: "CS + Applied Maths undergrad at IIIT Delhi researching why aligned language models detect user distress but still answer — and building the systems around that work.",
   socials: {
     github: "https://github.com/nikhil-agrawal123",
     linkedin: "https://www.linkedin.com/in/nikhil-agrawal-6b238831a/",
@@ -184,6 +188,9 @@ const Index = () => {
       <section id="skills" className="relative">
         <TechStack />
       </section>
+      <section id="experience" className="relative">
+        <Experience />
+      </section>
       <section id="about" className="relative">
         <Timeline data={timelineData} />
       </section>
@@ -196,7 +203,7 @@ const Index = () => {
           description="I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision."
           phone="+91 9811782270"
           email="nikhilagrawal6448@gmail.com"
-          web={{ label: "Nikhil Agrawal", url: "https://portfolio-eight-omega-35.vercel.app/" }}
+          web={{ label: "Nikhil Agrawal", url: "https://nikhils.dev/" }}
         />
       </section>
     </div>

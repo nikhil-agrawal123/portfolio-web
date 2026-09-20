@@ -344,3 +344,12 @@
     transform: rotate(-1turn);
   }
 }
+
+/* Travelling signals in the network figure. transform-box/origin so scale() collapses the
+   signal at its own translated point, not around the centre of the viewBox. The per-signal
+   @keyframes are generated in the component, since each route differs. */
+.nn-signal {
+  transform-box: view-box;
+  transform-origin: 0 0;
+}
+
