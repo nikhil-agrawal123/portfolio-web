@@ -5,10 +5,11 @@ import { ArrowLeft, BookOpen } from "lucide-react";
 
 // 5x7 bitmap glyphs
 const FOUR = ["#...#", "#...#", "#...#", "#####", "....#", "....#", "....#"];
-const ZERO = [".###.", "#...#", "#..##", "#.#.#", "##..#", "#...#", ".###."];
+const ZERO = [".###.", "#...#", "#...#", "#...#", "#...#", "#...#", ".###."];
 
 const PAD = 2;
-const COLS = PAD + 5 + 1 + 5 + 1 + 5 + PAD;
+const GAP = "..";
+const COLS = PAD + 5 + GAP.length + 5 + GAP.length + 5 + PAD;
 const ROWS = PAD + 7 + PAD;
 const CELL = 20;
 const SWEEP = 2.4; // seconds for the scan line to cross the grid
@@ -17,7 +18,7 @@ const SWEEP = 2.4; // seconds for the scan line to cross the grid
 const rowOf = (r: number) => {
   const g = r - PAD;
   if (g < 0 || g >= 7) return ".".repeat(COLS);
-  return ".".repeat(PAD) + FOUR[g] + "." + ZERO[g] + "." + FOUR[g] + ".".repeat(PAD);
+  return ".".repeat(PAD) + FOUR[g] + GAP + ZERO[g] + GAP + FOUR[g] + ".".repeat(PAD);
 };
 
 const NotFound = () => {
