@@ -66,6 +66,8 @@ export function NavBar({ items, className }: NavBarProps) {
     const element = item.url;
     if (element[0] === "#") {
       document.querySelector(element)?.scrollIntoView({ behavior: "smooth" });
+    } else if (element[0] === "/") {
+      window.location.href = element;
     } else {
       window.open(item.url, "_blank");
     }

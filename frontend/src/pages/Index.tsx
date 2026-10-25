@@ -1,4 +1,4 @@
-import { Home, User, Briefcase, Code2, Mail, Trophy, FlaskConical } from "lucide-react";
+import { Home, User, Briefcase, Code2, Mail, Trophy, FlaskConical, BookOpen } from "lucide-react";
 import { NavBar } from "@/components/ui/tubelight-navbar";
 import { HeroParallax } from "@/components/ui/hero-parallax";
 import { Timeline } from "@/components/ui/timeline";
@@ -16,6 +16,7 @@ const navItems = [
   { name: "About", url: "#about", icon: User },
   { name: "Awards", url: "#achievements", icon: Trophy },
   { name: "Contact", url: "#contact", icon: Mail },
+  { name: "Blog", url: "/blog", icon: BookOpen },
   { name: "Resume", url: resumeLink, icon: Briefcase },
 ];
 
