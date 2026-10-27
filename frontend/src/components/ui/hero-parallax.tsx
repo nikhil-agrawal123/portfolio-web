@@ -26,7 +26,7 @@ interface ProfileData {
   };
 }
 
-const resumeLink = 'https://drive.google.com/file/d/1CUeRVK1hx84sAWGuMoMeaAXbQRjUdNUv/view?usp=sharing' ;
+const resumeLink = 'https://drive.google.com/file/d/1rFKkU9XG5jgKwvgSWjS3XN5yC2ivaCky/view?usp=drivesdk' ;
 
 // Geometric lines SVG component
 const GeometricLines = () => (
